@@ -8,4 +8,4 @@ Ideas:
 2. Interactive thing
    - Image manipulation and or graphics in general
    - Learn more about classes and objects
-   
+
