@@ -1,7 +1,7 @@
 def SayHiBack():
-    print("Howdy!")
+  print("Howdy!")
 
 def main():
-    SayHiBack()
+  SayHiBack()
 
 main()
