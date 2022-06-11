@@ -6,3 +6,6 @@ class Ingredient():
   
   def printInfo(self):
     print("{ " + self.name + ": " + str(self.amount) + " " + self.units + " }")
+
+    class Recipe():
+      def __init__(self, ingredients):
