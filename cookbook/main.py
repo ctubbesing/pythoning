@@ -1,9 +1,11 @@
-from Kitchen import Ingredient
+from Kitchen import Ingredient, Recipe
 
 def main():
-  print('in main')
-
   ingredientA = Ingredient('carrot', 12, 'sticks')
-  ingredientA.printInfo()
+  ingredientB = Ingredient('celery', 3, 'sticks')
+  #ingredientA.printInfo()
+  ingredientsList = [ingredientA, ingredientB]
+  recipeA = Recipe('A', ingredientsList, ['pan', 'bowl'], 300, 400, ['Do the thing to the food'])
+  recipeA.printInfo()
 
 main()
