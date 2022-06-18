@@ -19,6 +19,19 @@ def main():
   print("\nAdding MORE carrots to pantry...")
   pantry.addIngredient(carrots)
   pantry.printInfo()
+  print("\nSubtracting 5 carrots from pantry...")
+  pantry.subtractIngredient('carrot', 5)
+  pantry.printInfo()
+  print("\nSubtracting 5 oz milk from pantry...")
+  result = pantry.subtractIngredient('milk', 5)
+  if result != -1:
+    units = pantry.ingredientsDict['milk'].units
+    print('ERROR: Insufficient funds. only ' + str(result) + ' ' + units + ' available.')
+  pantry.printInfo()
+
+
+
+
   # pantry.addIngredient(ingredientA)
   # pantry.addIngredient(ingredientA)
 
