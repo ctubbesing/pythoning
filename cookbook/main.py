@@ -1,5 +1,4 @@
-from Kitchen import Ingredient
-from Kitchen import Pantry
+from Kitchen import Ingredient, Recipe, Pantry
 
 def main():
   # create some ingredients
@@ -7,6 +6,7 @@ def main():
   carrots.printInfo()
   milk = Ingredient('milk', 3, 'oz')
   milk.printInfo()
+  celery = Ingredient('celery', 3, 'sticks')
   
   # create pantry
   pantry = Pantry()
@@ -29,10 +29,8 @@ def main():
     print('ERROR: Insufficient funds. only ' + str(result) + ' ' + units + ' available.')
   pantry.printInfo()
 
-
-
-
-  # pantry.addIngredient(ingredientA)
-  # pantry.addIngredient(ingredientA)
+  ingredientsList = [carrots, celery]
+  recipeA = Recipe('A', ingredientsList, ['pan', 'bowl'], 300, 400, ['Do the thing to the food'])
+  recipeA.printInfo()
 
 main()
