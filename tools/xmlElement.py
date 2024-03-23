@@ -9,25 +9,23 @@ class XMLAttribute():
 class XMLElement():
   def __init__(self,
                tag,
-               attributes,
-               children,
-               rawContent = '',
-               indentSize = 2):
+               attributes = [],
+               children = [],
+               rawContent = ''):
     self.tag = tag
     self.attributes = attributes
     self.children = children
     self.rawContent = rawContent
-    self.indentSize = indentSize
   
   def isRaw(self):
     return len(self.rawContent) > 0
   
-  def toString(self, baseIndent = 0):
+  def toString(self, baseIndent = 0, indentSize = 2):
     if (self.isRaw()):
       return self.rawContent
     
     def indent(level = 0):
-      return level * self.indentSize * ' '
+      return level * indentSize * ' '
     
     def buildOpeningTag(isSelfClosing):
       tagStr = ''
@@ -46,15 +44,15 @@ class XMLElement():
     closingTag = '</' + self.tag + '>\n'
     if (len(self.children) == 0):
       xmlStr += buildOpeningTag(isSelfClosing = True)
-    elif (len(self.attributes) == 1 and len(self.children) == 1 and self.children[0].isRaw()):
+    elif (len(self.attributes) == 0 and len(self.children) == 1 and self.children[0].isRaw()):
       xmlStr += '>' + self.children[0].rawContent + closingTag
     else:
       xmlStr += buildOpeningTag(isSelfClosing = False)
       for c in self.children:
         if (c.isRaw()):
-          xmlStr += indent(baseIndent + 1) + c.toString() + '\n'
+          xmlStr += indent(baseIndent + 1) + c.toString(indentSize = indentSize) + '\n'
         else:
-          xmlStr += c.toString(baseIndent + 1)
+          xmlStr += c.toString(baseIndent + 1, indentSize = indentSize)
       xmlStr += indent(baseIndent) + closingTag
     
     return xmlStr
